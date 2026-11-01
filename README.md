@@ -42,7 +42,7 @@ Output goes to `logs\` (ignored by git). Sensor numbers are this board's; check 
 | [`fan-diag.ps1`](tools/fan-diag.ps1) | no | Fan mode, zone duties, BMC LAN IP, every temperature/fan/voltage sensor with its thresholds |
 | [`fan-sdr.ps1`](tools/fan-sdr.ps1) | no | Every SDR record by ID, plus direct probes of sensors 64-72, to find a deleted record |
 | [`fan-sel.ps1`](tools/fan-sel.ps1) | no | Last SEL entries, decoded: which sensor crossed which threshold, with the reading |
-| [`fan-watch.ps1`](tools/fan-watch.ps1) | no | Watches for N minutes and flags fail-safe spikes (a fan at 2x its baseline with the CPU idle) |
+| [`fan-watch.ps1`](tools/fan-watch.ps1) | no | Watches for N minutes and flags fail-safe spikes: a fan at 2x its baseline with the CPU idle, any new SEL entry, any change in zone duty. The last two still work when no fan's RPM can show a spike (3-pin fans, deleted record) |
 | [`fan-control-test.ps1`](tools/fan-control-test.ps1) | temporarily | Does the BMC accept Full mode and per-zone duty, and which fans follow each zone? Restores Optimal |
 | [`fan-tune.ps1`](tools/fan-tune.ps1) | temporarily | Lowest safe idle duty for zone 1, then zone 0, then 10 min of load on every thread at those floors. Restores Optimal |
 | [`fan-optimal.ps1`](tools/fan-optimal.ps1) | yes | Hands control back to the BMC (Optimal mode). Run it if a script was interrupted in Full mode |
